@@ -105,16 +105,230 @@
 //----------------------------------------------------------------
 //-- Accessing Map elements..
 
+// void main() {
+//   Map person = {};
+
+//   person['name'] = 'Sam';
+//   person['age'] = 25;
+//   person['gender'] = 'Male';
+
+//   print(person['name']);
+//   print(person['age']);
+//   print(person['gender']);
+// }
+
+//----------------------------------------------------------------
+//-- Iterating map..
+
+// void main() {
+//   Map employee = {
+//     'name': 'Sam',
+//     'age': 24,
+//     'salary': 30000,
+//     'post': 'Software Developer',
+//   };
+
+//   // printing the values...
+//   employee.forEach((key, value) {
+//     print(
+//         '$key : $value'); /*// Print outPut..
+//                                     name : Sam
+//                                     age : 24
+//                                     salary : 30000
+//                                     post : Software Developer
+//      */
+//   });
+// }
+
+//----------------------------------------------------------------
+//-- Properties of Map class
+
+// length, isEmpty, isNotempty,
+//  keys, values, entries..
+
+// void main() {
+//   Map employee = {
+//     'name': 'Sam',
+//     'age': 24,
+//     'salary': 30000,
+//     'post': 'Software Developer',
+//   };
+
+//   print(employee.length); //-- 4
+//   print(employee.isEmpty); //-- false
+//   print(employee.isNotEmpty); //-- true
+
+//   //  printing the keys..
+//   for (var Key in employee.keys) {
+//     print(Key); //   name  age  salary  post
+//   }
+
+//   //  printing the values..
+//   for (var values in employee.values) {
+//     print(values); //  Sam  24  30000   Software Developer
+//   }
+
+//   //  printing the entry
+//   for (var entry in employee.entries) {
+//     print(
+//         '${entry.key} : ${entry.value}'); /*-- Print outPut
+//                                                     name : Sam
+//                                                     age : 24
+//                                                     salary : 30000
+//                                                     post : Software Developer
+//      */
+//   }
+// }
+
+//-----------------------------------------------------------------------------
+// Methods of Map class
+// addAll(),  putIffAbsent()
+
+// void main() {
+//   Map person = {
+//     'name': 'Sam',
+//   };
+
+//   person['post'] = 'Manager';
+//   person.putIfAbsent('age', () => 25);
+
+//   Map employee = {
+//     'salary': 50000,
+//   };
+
+//   employee.addAll(person);
+
+//   print('person = $person'); //  person = {name: Sam, post: Manager, age: 25}
+//   print(
+//       'employee = $employee'); //  employee = {salary: 50000, name: Sam, post: Manager, age: 25}
+// }
+
+//-----------------------------------------------------------------------------
+// Methods of Map class
+// remove(),   removeWhere(),  clear()
+
+// void main() {
+//   Map employee = {
+//     'name': 'Sam',
+//     'age': 25,
+//     'salary': 'Software Developer',
+//   };
+
+//   print(
+//       'employee = $employee'); //  employee = {name: Sam, age: 25, salary: Software Developer}
+
+//   employee.remove('age');
+//   print(
+//       'employee = $employee'); //  employee = {name: Sam, salary: Software Developer}
+
+//   employee.clear();
+//   print('employee = $employee'); //  employee = {}
+// }
+
+//-----------------------------------------------------------------------------
+// Methods of Map class
+//-- removeWhere()
+
+// void main() {
+//   Map employee = {
+//     'name': 'Sam',
+//     'age': 25,
+//     'salary': 30000,
+//     'post': 'Software Developer',
+//   };
+
+//   employee.removeWhere((key, value) {
+//     // remove all the entries from the map which is specify the String data type..
+//     if (value.runtimeType == String) {
+//       // if (key == 'name' || key == 'salary') {      // In here remove from the map which is name and salary..
+//       return true;
+//     }
+//     return false;
+//   });
+
+//   print('employee = $employee'); //  employee = {age: 25, salary: 30000}
+// }
+
+//-----------------------------------------------------------------------------
+//- containsKey(),  containsvalue()
+
+// void main() {
+//   Map employee = {
+//     'name': 'Sam',
+//     'age': 25,
+//     'salary': 30000,
+//     'post': 'Software Developer',
+//   };
+
+//   bool hasSalary = employee.containsKey('salary');
+//   print('hasSalary : $hasSalary'); //  hasSalary : true
+
+//   bool isSam = employee.containsValue('Sam');
+//   print('isSam: $isSam'); //  isSam: true
+// }
+
+//-----------------------------------------------------------------------------
+//-- Methods of Map Class
+// == map()
+
+// void main() {
+//   Map employee = {
+//     'name': 'Sam',
+//     'post': 'Software Developer',
+//     'location': 'London'
+//   };
+
+//   Map emp = employee.map((key, value) {
+//     //-- In here we capitalize all the values with the help map() methods..
+//     return MapEntry(key, value.toUpperCase());
+//   });
+
+//   print(
+//       'emp = $emp'); //  emp = {name: SAM, post: SOFTWARE DEVELOPER, location: LONDON}
+// }
+
+//-----------------------------------------------------------------------------
+//-- Methods of Map Class
+// == update()
+
+// void main() {
+//   Map employee = {
+//     'name': 'Sam',
+//     'age': 25,
+//     'salary': 30000,
+//     'post': 'Software Developer',
+//   };
+
+//   employee.update(
+//       'age', (value) => ++value); // increased by one, the age value..
+//   employee.update(
+//       'name', (value) => value.toUpperCase()); // capital the name of value..
+
+//   print(
+//       employee); //  {name: SAM, age: 26, salary: 30000, post: Software Developer}
+// }
+
+//-----------------------------------------------------------------------------
+//-- Methods of Map Class
+// == updateAll()
+
 void main() {
-  Map person = {};
+  Map employee = {
+    'name': 'Sam',
+    'age': 25,
+    'salary': 30000,
+    'post': 'Software Developer',
+  };
 
-  person['name'] = 'Sam';
-  person['age'] = 25;
-  person['gender'] = 'Male';
+  employee.updateAll((key, value) {
+    if (key == 'age') return ++value;
 
-  print(person['name']);
-  print(person['age']);
-  print(person['gender']);
+    if (key == 'salary') return value + 1000;
+
+    if (key == 'post') return 'Manager';
+
+    return value;
+  });
+
+  print(employee);    //  {name: Sam, age: 26, salary: 31000, post: Manager}
 }
-
-// https://youtu.be/lQn8OKnV_7Q?list=PLeKQz1VjpjFqqXLvQ8rTnYxZcUqEGA0dm&t=1071
