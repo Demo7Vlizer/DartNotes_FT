@@ -530,3 +530,42 @@ var x = [7, 21, 5, 6, 18];
 ## 8. Ability to Store Multiple 'Null' Values
 - **List:** Yes.
 - **Set:** No.
+
+--------------------------------------------------------------------------------------------------------------------
+
+# Operator Basics
+
+## Definition
+An operator is a symbol that tells the computer to perform a specific arithmetic or logical action.
+
+## Purpose
+Operators create expressions and operate on data or variables.
+
+## Types of Operators
+- **Unary**: Operates on a single operand (e.g., `-x`).
+- **Binary**: Operates on two operands (e.g., `x + y`).
+- **Ternary**: Operates on three operands (e.g., `x ? y : z`).
+
+### Example of an Expression
+- **Expression**: `x = y + z;`
+  - **Operators**: `=` and `+`
+  - **Operands**: `x`, `y`, `z`
+
+---
+
+# Types of Operators in Programming
+
+1. **Arithmetic Operators**: Perform basic mathematical operations like addition (`+`), subtraction (`-`), multiplication (`*`), etc.
+2. **Relational Operators**: Compare values, such as greater than (`>`), less than (`<`), or equal to (`==`).
+3. **Logical Operators**: Combine multiple conditions, e.g., AND (`&&`), OR (`||`), NOT (`!`).
+4. **Assignment Operators**: Assign values, e.g., `=` or `+=`.
+5. **Increment & Decrement Operators**: Increase (`++`) or decrease (`--`) values by one.
+6. **Bitwise Operators**: Perform bit-level operations, like AND (`&`), OR (`|`), XOR (`^`).
+7. **Conditional Operators**: Ternary operator, e.g., `? :`, for concise conditional statements.
+8. **Type Test Operators**: Check or test data types.
+9. **Cascade & Spread Operators**: Efficiently handle collections or objects in some languages.
+10. **Null Aware Operators**: Deal with `null` values safely.
+11. **Other Operators**: Language-specific operators or those serving special purposes.
+
+--------------------------------------------------------------------------------------------------------------------
+
