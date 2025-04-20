@@ -30,3 +30,37 @@ int factorial(int n) {
 
   return fact;
 }
+
+//----------------------------------------------------------------
+//-- Types & Categories of Functions
+
+/*  
+  **Notes on Functions in Programming:**
+
+- **Types of Functions:**
+  - **Pre-defined Function:**
+    - These are built-in functions provided by the programming language.
+    - Example: `print('Hello');` → Displays "Hello" on the screen.
+
+  - **User-defined Function:**
+    - Functions created by the programmer to perform specific tasks.
+    - Example:
+      ```dart
+      void main() {
+        // Main function
+      }
+
+      int cube(int n) {
+        return n * n * n; // Returns the cube of a number
+      }
+      ```
+
+**Key Takeaways:**
+- Pre-defined functions save time and effort by offering ready-to-use functionality.
+- User-defined functions help structure code logically and improve reusability.
+- The `main()` function is essential as the starting point for execution.
+
+ */
+
+//-------------------------------------------------------------------------------
+
