@@ -312,7 +312,7 @@ void main() {
 --------------------------*/
 
 
-//------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------
 //-- Public & private members in Dart | Dart visibility 
 //-- Private mean what it means such a members can be access only inside this specific file or project inside the Person class.. 
 
