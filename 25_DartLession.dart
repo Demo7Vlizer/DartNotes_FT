@@ -459,6 +459,7 @@ void main() {}
 //-----------------------------------------------------------------------------------
 //-- 11) - One constructor may invoked another constuctor.. - This concept basically called  The constructor redirecting.. 
 
+/*------------------------------------------
 class Test {
 
   //-- This is default constructor.. 
@@ -473,4 +474,4 @@ class Test {
     Test t = Test.someName();     //  Test default constructor
   }
 }
-
+-------------------------------------------*/
