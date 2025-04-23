@@ -178,6 +178,7 @@ void main() {
 //----------------------------------------------------------------------------------------------------
 //-- Factory constructor returns instance by calling another constructor, it looks similar to constructor redirecting.
 
+/*--------------------------
 class Test{
 
   Test(){
@@ -192,3 +193,4 @@ class Test{
 void main(){
   Test t = Test.callMe();
 }
+----------------------------*/
