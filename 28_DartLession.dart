@@ -33,7 +33,6 @@ class Test {
 //-- 2) We use  'this' refrence incase of constructor to have the initializery list that is to initialize the members inside the parameter list of constructor
 //-- 3) We use  'this' refrence to is seen constructor to call another constructor from the one constructor but make sure that in factory constructor we cannot have this for any of the use ..
 
-
 /*--------------------
 class Test {
   int a = 10;
@@ -52,11 +51,10 @@ class Test {
 }
 -----------------------*/
 
-
 //-- -- -- -- -- -- --- -- -- ---- -- -- ----- -- --------- -- ------ -----------
 //-- Normal constructor             ||        Factory constructor..
-//-- No need to return instance 
-//-- Must return an instance explicily.. 
+//-- No need to return instance
+//-- Must return an instance explicily..
 
 /*-----------------------------------
 class Test {
@@ -72,12 +70,12 @@ class Test {
 }
 --------------------------------------*/
 
-
 //-- -- -- -- -- -- --- -- -- ---- -- -- ----- -- --------- -- ------ -----------
 //-- Normal constructor             ||        Factory constructor..
-//-- Generates instance of current class only 
-//-- Generates instance  of current or sub-class.. 
+//-- Generates instance of current class only
+//-- Generates instance  of current or sub-class..
 
+/*-----------------------
 class Father {
   Father();
 
@@ -93,12 +91,12 @@ class Father {
 class Son extends Father {
   Son();                    //-- it's clear that we've chocie that either we can return instance of same class or we can return sub class as per required in factory constructor.. 
 } 
-
+-------------------------*/
 
 //-- -- -- -- -- -- --- -- -- ---- -- -- ----- -- --------- -- ------ -----------
 //-- Normal constructor             ||        Factory constructor..
-//-- Returns new instance always .. 
-//-- Return  new or old instance as implemented 
+//-- Returns new instance always ..
+//-- Return  new or old instance as implemented
 
 /*------------------------
 class Test {
@@ -119,9 +117,82 @@ class Test {
 }
 ----------------------------*/
 
-
 //-- -- -- -- -- -- --- -- -- ---- -- -- ----- -- --------- -- ------ -----------
 //-- Normal constructor             ||        Factory constructor..
 //-- Can invoke super class constructor using super()
 //-- Can't invoke super class constructor using super()
+
+/*---------------------------------
+class Father{
+  Father(int a);
+}
+
+class Son extends Father{
+  //
+  Son():super(10)   //--  Basically in here it's normal constructor..   that's the reason with this constructor we can use user(10); -> this indicates try to calls super class constructor that access integor type of parameter 
+
+
+//
+factory Son.getInstance():super(10){   //-- But if we try to do same thing in factory constructor but we in here it won't allows us to do this same things.. 
+
+  return Son();   
+
+  }
+}
+--------------------------------*/
+
+//-- -- -- -- -- -- --- -- -- ---- -- -- ----- -- --------- -- ------ -----------
+//-- Normal constructor             ||        Factory constructor..
+//-- Can be invoked by sub class constructor  using super()
+//-- Can't be invoked by sub class constructor using super()
+
+/*----------------------------
+class Father {
+  Father(int a); //-- Default constructor..
+
+  factory Father.getFather() {
+    return Father(10);
+  }
+}
+
+class Son extends Father {
+  //
+  // Son():super(10);    //-- it's trying to call father default constructor and that's perfectly fine..
+  Son() : super.getFather()(10); //-- But when we trying to call factory constructor inside super. constructor.. it's has to be normal constructor.. 
+}
+---------------------------------*/
+
+
+//-- -- -- -- -- -- --- -- -- ---- -- -- ----- -- --------- -- ------ -----------
+//-- Normal constructor             ||        Factory constructor..
+//-- Late  initialization of final fields is not possible  
+//-- Late initialization of final fields is possible.. 
+
+/*------------------------
+class Test {
+    final int x;
+    final int y;
+
+    Test(this.x, this.y);
+
+    factory Test.getInstance(int x) {
+        int value = getData(x);
+        return Test(x, value);
+    }
+
+    static int getData(int x) {
+        // some logic
+        return 10;
+    }
+}
+-----------------------------*/
+
+//-- -- -- -- -- -- --- -- -- ---- -- -- ----- -- --------- -- ------ -----------
+//-- Normal constructor             ||        Factory constructor..
+//-- It is called generative constructor & designed to return new instance every time 
+//-- It is made for implementing desinged patterns like factory & single tone   
+
+
+
+// That there are .. normal , generative , default are same as well .. there is another one which called named constructor.. and another one is factory constructor..
 
