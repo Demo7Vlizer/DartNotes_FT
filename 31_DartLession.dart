@@ -129,6 +129,7 @@ void main(){
 //--------------------------------------------------------------
 //--  Benefits of const constructor 
 /* 
+-------------
   Benefits for const constructor
 
 ✓ In JIT environment (Development phase), it improves the performance of application as creates the canonical instance
@@ -140,7 +141,10 @@ For e.g. Padding(
 ✓ Widget created as const will never re-build when state of app changes
 
 ✓ In AOT environment (Flutter release builds) all constant objects are evaluated and 
-canonicalized at compile time, then serialized into snapshot. When we start the application 
-the snapshot is loaded into memory and all constants come into existence. 
-They are not loaded lazily. They are never garbage collected.
+  canonicalized at compile time, then serialized into snapshot. When we start the application 
+  the snapshot is loaded into memory and all constants come into existence. 
+  They are not loaded lazily. They are never garbage collected.
+---------------
  */
+
+
