@@ -56,6 +56,7 @@ void main() {
 */
 
 //********************************************************************************* */
+/*
 class Test {
   static String getFormatted(DateTime value) {
     String s = '';
@@ -69,6 +70,7 @@ void main() {
   Test.getFormatted('TuesDay' as DateTime);
 
 }
+*/
 
 
 // ------------------------------------------------------------------------------------------------------------
@@ -104,3 +106,61 @@ class Abc {       //-- Class Abc
 //-- Restrictions on static variable or method
 //--  Static methods has no access to this reference 
 
+/*
+class Abc {
+    int x = 10;
+
+    void test() {
+        this.x = 20;
+    }
+
+    static void demo() {
+        this.x = 20;         //-- in here we getting error.. due to we cannot use this inside static methods.. . 
+    }
+}
+*/
+
+
+// ------------------------------------------------------------------------------------------------------------
+//-- Restrictions on static variable or method
+//-- We can't define global function as static ... 
+
+
+/*-----------------------
+static void demo() {}
+
+class Test {
+    static void show() {}
+} 
+----------------------------*/
+
+
+// ------------------------------------------------------------------------------------------------------------
+//-- Restrictions on static variable or method
+//-- We can't define global or local variable as static.. 
+
+/*------------------------
+static int x = 10;     //-- Here we getting error .. because in here we cannot use static .. beacuse this x variable it's not the class or not the field 
+                      //-- So if we want to define a variable as a static it must be a part of class or field so it cannot be a global variable even it cannot be the local variable of method
+
+class Test {
+    void show() {
+        static int y = 20;  //-- This is y variable is local local variable.. it's now allowed  to use static.. - if we remove static the error will disappear from line no. 144 .. 
+    }
+}
+---------------------*/
+
+// ------------------------------------------------------------------------------------------------------------
+//-- Restrictions on static variable or method
+//-- Static members can't be accessed using an instance ...
+
+
+class Test {
+    static int x = 10;
+}
+
+void main() {
+    Test obj = Test();
+    // print(obj.x);          //-- In here we getting error because of that we're trying to access by the instance name obj - 
+    print(Test.x);          //-- It has to be access by class name then the error will disappear..   
+}
