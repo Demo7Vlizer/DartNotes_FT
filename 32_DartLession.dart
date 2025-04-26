@@ -155,6 +155,7 @@ class Test {
 //-- Static members can't be accessed using an instance ...
 
 
+/*-------------------
 class Test {
     static int x = 10;
 }
@@ -164,3 +165,4 @@ void main() {
     // print(obj.x);          //-- In here we getting error because of that we're trying to access by the instance name obj - 
     print(Test.x);          //-- It has to be access by class name then the error will disappear..   
 }
+--------------------*/
