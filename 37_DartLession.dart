@@ -52,14 +52,13 @@ void main() {
    from person thay's why the arrow has to be shown in upward direction...
 */
 
-class Person{
-   //
+class Person {
+  //
 }
 
-class Employee extends Person{
-   //
+class Employee extends Person {
+  //
 }
-
 
 //----------------------------------------------------------------------------
 //--3) What's problem of copy-paste instead of inheritane ?
@@ -80,6 +79,7 @@ class Employee extends Person{
 -----------------------------------
  */
 
+/*--------------------
 class A {
     // 10 methods
 }
@@ -91,7 +91,7 @@ class B {
 class C {
     // 10 methods
 }
-
+----------------------*/
 
 //----------------------------------------------------------------------------
 //--4) Why constructor are not inherited..?
@@ -126,7 +126,226 @@ class B extends A {
 }
 ------------*/
 
+//----------------------------------------------------------------------------
+//--5) What about private members in heritance?
+
+/* 
+-----------------------------------------
+In **"a.dart"**, the class `A` defines two integer fields:
+- `_privateField`: A **private** field, indicated by the underscore prefix.
+- `publicField`: A **public** field, accessible from outside the class.
+
+In **"b.dart"**, the class `B` extends `A` and contains a method `test()`:
+- Assigning a value to `publicField` works, as indicated by the comment `// works`.
+- Assigning a value to `_privateField` results in an error (`// error`), because private fields cannot be accessed directly by subclasses.
+
+Here’s the extracted code:
+
+```dart
+// a.dart
+class A {
+  int _privateField;
+  int publicField;
+}
+
+// b.dart
+class B extends A {
+  void test() {
+    publicField = 10;  // works
+    _privateField = 20;  // error
+  }
+}
+```
+
+This highlights **Dart's privacy rules**, where private fields (prefixed with `_`) are restricted to the file they are declared in. If `B` is in a separate file (`b.dart`), it cannot access `_privateField` from `A`.
+------------------------------------------------
+ */
 
 //----------------------------------------------------------------------------
-//--5) What about private members in heritance? 
+//--6) Does every Dart  class involve in heritance ?
+/* 
+   Consider we've a class for that particular class we don't want to write extend any other class so still that individual class is 
+   a part of inheritance means weather this class is enjoying inheritance .. yes it's the part of inheritance ..
+   each and every class in dart weather you make it inherited using some class or if keep it without inherting so still each every class in 
+   dart will inherit the class means it will enjoy the inheritance so if we inheritance the class it's going to inherit our class but
+   consider we've class that is not going to inherit any other class then such a class is inheriting the object class means each and every class 
+   in dart extends object class .. except the class called null so makes sure that null class is the only one class in dart which does not inherit the class 
+   called object and the null is an instance that represents the null object ...  
+ */
 
+/*-------------------
+class A {}  //-- 
+
+void main() {
+  A obj = A();
+//   obj.hashCode; 
+//   obj.runtimeType;
+//   obj.noSuchMethod('d');    //-- This are the things that we're getting from the object.. classes..
+}
+---------------------*/
+
+//----------------------------------------------------------------------------
+//--7)  Is inharitance is need for Flutter ? 
+
+/*    
+   Writing a first flutter application whenever we write some class or we use some widget here we write that partulcar class 
+   and we go on writing extends a statelessWidget - inheritance is useful it is required in flutter each and everything in flutter
+   is made using inheritance if we have a good programming experience of if we've sense of programming so makes sure that definitely 
+   required it's definitely important to have   inheritance knowledge to impliment or to use better 
+ */
+
+/*    
+-------------
+_"Is inheritance is need for Flutter?"_
+
+```dart
+import 'package:flutter/material.dart';
+
+class StartScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      // Here you can design the UI of this screen
+    );
+  }
+}
+```
+
+This snippet shows a Flutter `StatelessWidget` named `StartScreen`. Inheritance is used here because `StartScreen` extends `StatelessWidget`, making it a custom widget that follows Flutter's reactive framework.
+---------------
+ */
+
+
+//----------------------------------------------------------------------------
+//--8) Does inheritance finished if I learned extending class ?
+
+
+/*
+NO ! 
+
+- **Abstract class**
+- **Abstract method**
+- **Interface**
+- **Mixin**
+- **Constructors in inheritance**
+
+- After knowing this all you'll properly understand about inheritance
+
+ */  
+
+
+//----------------------------------------------------------------------------
+//--9) Can i make class as final ? So that no one can inherit from it..
+
+/* 
+   If we're tyring to write as a final class A this if giving us error because in dart we cannot define A class as final 
+   means we cannot create a class that is final means we cannot prevent it from the inheritance but however if we want our 
+   class to prevent it from inheritance it's possible we can make the constructor private and we can use so many combination and all this things 
+   so it's possible we can keep it procted from inheritance means nobody can inheritance that one but we cannot make it final means 
+   we cannot use final keyword for the class final is only reserved or only use if for defining the final variables in the class 
+ */
+
+
+/*
+//-- Error 
+final clas A {
+   //
+}
+*/
+
+
+
+//----------------------------------------------------------------------------
+//--10)  What is components & aggregation? It is different than inheritance?
+
+/*   
+---------- What is components & aggregation? It is different than inheri -----------------------------
+
+//-----------------------------------------------------------------------------------
+//-- Types of Inheritance 
+//-- Multiple Inheritance   -- Where we've one subClass that has got multiple superClasses   (A -> C .. B -> C)
+
+/*  
+  In dart we cannot use multiple inhertance it means for a given class we can extend only one class directly by using 
+  level it's possible means by using the multiple-level see C can have the B and C as the super classes but if you think 
+  directly it's not possible to have mutliple super classes for the given class..
+  What is the reason not supporting multiple inheritance   
+ */
+
+//-----------------------------------------------------------------------------------
+//-- Different class relatioin that we can have.. 
+
+/*    
+  Class Relations : ->  
+  : ->  Inheritance (IS A )  
+  : ->  Association (HAS A )  
+
+  - Inheritance (IS A ) : So whenever we use inheritance it creates IS a relation means we have two classes and two classes will have 
+                          the relation called ( IS A )
+
+  - Association (HAS A ) : One more type of class relation and that is called association .. Basically - let's say we have two classes
+                            so without extending class means without inheriting a class it's possible for us to have relationship 
+                            between two classes consider we have class A and B inside the class B we can create the object of class
+                            so using that object also we can access the properties or members of the class a inside class b and that 
+                            kind of relation is called as association so whenever we use association it's going to create the (HAS A ) RELATIONSHIP.. 
+                            And there two types of Association the one is (Agggregation - (Weak Bouding )) and another one is called (composition -(Strong Bouding)) so 
+                            whenever we've the weak bounding between the classes that type of association is known as aggregation and when we've this strong bouding 
+                            between the classes that is referred as the composition... 
+ */
+
+//--------------------------------------------------------------------------------
+//-- Example of : Inheritance (IS A )  
+/*  
+  We've class Person and we've class Employee we observe here the class employee using extends Person so whenever we use extend person
+  means employee and person they are now having some relation as we use extends means we're using inheritance it create (IS A) relationship.. 
+ */
+
+/*---------------------
+    class Person {
+    //
+    }
+
+    class Employee extends Person {
+        //
+    }
+-------------------------*/
+
+//--------------------------------------------------------------------------------
+/*
+//-- Example of : Association (HAS A ) 
+                  - (Agggregation - (Weak Bouding ))
+                  - (composition -(Strong Bouding))
+
+-------------------------------------------------------------
+    - Consider here we've two individual classes music player and the class called engine 
+      then we have another class called car we can observe here inside the car class we have two object we have the 
+      object of music player and engine .. we can observe inside a class called car if we have the object of music player or this object 
+      means by this object we can access the members of music player class so we can say the car and music player now they're connected 
+      or now they have some relation but you can observe here it's not inheritance still it's possible to have some connection so it is not 
+      blood relation kind of connection so this type of connection is called as association but the observable things is there can be a music player 
+      without a car that means music player can exist we can use that one you can enjoy that one and there can be a  car without a music player 
+      it's means this music player object and the car object or the car that we have there is not strong bouding it is having a weak bounding so that's why 
+      we can say the car and music player they have the relationship or association that is called as the aggregation and on another hand we can observe here
+      inside the car class we have created object called engine here and we can access the members of this engine class by using the object of engine inside
+      the car so still there a relation between the car class and engine class but it's not inheritance because we're not extending the engine 
+      inside the car class still we can access the properties that's also a kind of relationship and that is called association but we can 
+      observe here engine is useless without a car to run the engine to use practical engine there has to be car or there has to be some vehicle 
+      and a car is useless without engine means if it don't have engine we can't run or we can't use the car so there's a strong bounding between the car class
+      and engine class so such a type of strong bounding or such a type of strong relation between the classes is known as a composition.. 
+*/
+
+class MusicPlayer {
+    //
+}
+
+class Engine {
+    //
+}
+
+class Car {
+    var musicPlayer = MusicPlayer(); // Weak Bounding
+    var engine = Engine(); // Strong Bounding
+}
+
+----------
+ */
