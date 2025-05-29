@@ -1,3 +1,4 @@
+
 //-- Super keyword in Dart | Dart super keyword
 
 //--  super
@@ -157,12 +158,38 @@ void main(){
 //-- Limitation of super keyword
 //-- Value of super cannot be modified.. 
 
- 
+/*-------------------
 class A {
 }
 
 class B extends A {
     void showData() {
-        super = null;
+        super = null;       //-- We cannot write something like this.. 
     }
 } 
+--------------------*/
+
+//----------------------------------------------------------------------------
+//-- super()
+
+
+/*-------------------
+class A {   //-- We have class a that contains total 3 constructors..  the default constructor, named constructor and the parameterized constructor.. 
+    A();
+    
+    A.withParameter(int x, int y);
+    
+    A.someName();
+}
+
+class B extends A {
+    // B():super.someName() {   //-- In this case just before the calling default constructor of class B, the super() is called..  
+    B():super.withParameter(10, 20) {   //-- Using super we can pass the parameters to the super class constructor..  and even call the named constructor and default constructor.. 
+             
+    }
+}
+
+void main() {
+    var obj = B();
+}
+--------------------*/
