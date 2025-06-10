@@ -424,6 +424,88 @@ class C implements B{
 
 
 /******************************************* */
-//--- Practical use of interface
+//-- Practical use of interface 
 
-//-- https://youtu.be/Avnb6tVKviE?list=PLeKQz1VjpjFqqXLvQ8rTnYxZcUqEGA0dm&t=1197
+/**
+   we have seen that interface enforce a contract that class has to fulfill using the implements keyword 
+   and we also seen that interface gives specification and class has to provide implementation  for those 
+   specification  - so we can make use of interface in two different situations ...
+   consider we've a class and we want that all the methods of a specific class must be overwritten by that 
+   class let's we've a class A that contains some methods and we want to force a class B that it must override 
+   all the methods of class A so in this case we can ask a class B to use class A as interface so instead of using
+   extends .. we can ask that class to implement so that for the class B it's compulsory to override all the methods 
+   or all the instance  members present in class A .. 
+   it's also possible using the abstract class then why someone use interface we know in abstract class we have 
+   the abstract methods but consider  inside a class we want to have a concrete method but along with that conrete 
+   method we want to force our subclass to override the method means we want our subclass to have it's own version
+   means superclass will have it's own version and subclass must have it's own version so in this scenario we will 
+   find the great use of interface 
+   --------------------------------------------
+   SECOND USE OF INTERFACE  
+   Consider we've some class and inside that class we want to force say methods of multiple classes to be overwritten 
+   consider we've a class C and inside this class C we want to force a class C that it must have to overwrite the methods 
+   of class A as well as class B so if we just make class A and class B as abstract so it's not going to work because 
+   we cannot extend more than one classes but we can implement interfaces so for class C we can ask the class that it has
+   to implement class A and class B so this how we can force any class to implement multiple methods present in the 
+   different classes ...
+   --------------------------------------------
+   NOTE : 
+   we can implement multiple interfaces in a class but we cannot extend multiple classes in a class 
+   --------------------------------------------
+   NOTE : 
+   we can implement multiple interfaces in a class but we cannot extend multiple classes in a class 
+ */
+
+//-- Let's understand with the help of an example  program ..
+
+
+/**
+  We've two different abstract classes called Area and Perimeter and here we simply want to use this abstract class
+  as interface that's why we have just define this void area method as the abstract method inside the class or interface 
+  called area then we have class called perimeter inside the interface called perimeter .. we have class called rectangle  
+  we can observe here inside this class rectangle we use implements area and perimeter it means for this class rectangle 
+  i want to force that it must overwrite all the methods present in class area and from the class perimeter so this is 
+  what we can achieve using interface but we cannot achieve using concept called extend so that's really a beauty of 
+  implements here so we have just created length and rate variable then we have define a constructor that accepts the 
+  value of length and breadth and we've simply just overwritten an area method that area of rectangle then we've method 
+  called perimeter we simply print the perimeter of rectangle inside the main we've created object of rectangle and we've 
+  simply called area and perimeter over that rectangle object.. when we run this program we will get the area of rectangle and 
+  perimeter for that given value 10 and 20 for the length and breadth ...
+
+ */
+
+abstract class Area {
+    void area();
+}
+
+abstract class Perimeter {
+    void perimeter();
+}
+
+class Rectangle implements Area, Perimeter {
+    int length, breadth;
+
+    Rectangle(this.length, this.breadth);
+
+    // @Override
+    void area() {
+        print('Area of Rectangle = ${length * breadth}');
+    }
+
+    // @Override
+    void perimeter() {
+        print('Perimeter of Rectangle = ${0.5 * length * breadth}');
+    }
+}
+
+void main() {
+    Rectangle obj = Rectangle(10, 20);
+    obj.area();
+    obj.perimeter();
+}
+
+/** Print - OutPut...
+  Area of Rectangle = 200
+  Perimeter of Rectangle = 100
+ */
+
