@@ -1,4 +1,4 @@
-// Mixins in Dart | Dart mixins
+//---  Mixins in Dart | Dart mixins ------------
 
 /**
   ##  -- Topics to learn 
@@ -375,7 +375,7 @@ void main() {
   called Speak Human means the the Men is a irrelevant class but Dog and Cat these are the irrelevant classes that's why it cannot be used 
   and let talk about  very interesting point here  let's if we use say class Human with Speak now we can observe here We getting error this is 
   because when we have class specified on with the mixin for that specific class we cannot use a mixin so its has to be used by it's subclasses 
-  not by the extactly same class specified using the on keyword ...j
+  not by the extactly same class specified using the on keyword ...
  */
 
 
