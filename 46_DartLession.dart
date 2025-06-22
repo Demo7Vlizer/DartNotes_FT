@@ -402,9 +402,17 @@ class Developer with Code, Debug{
 
 /**
   Can we place static members in mixin and if it is possible how to use those static members the answer for first question is
-  definitely we can say 
+  definitely we can play static members inside the mixin we can observe here mixin called MyMath has got static variable
+  and we have a static method inside it so that's completely fine now the second thing how to use those static members ..
+  we have to use static members of mixin in the same way we use the static members of class simply by using mixin name 
+  dot member name as we have used here MyMath dot pi or MyMath dot cube of two and when we run this program will observe here
+  we are getting the value of pi which is the value of constant in my mixin and it is the value of Cube of 2 .. 
+
+
  */
 
+
+/*
 mixin MyMath{
   static const double pi = 3.1415;
 
@@ -416,6 +424,233 @@ mixin MyMath{
 void main(){
   print(MyMath.pi);
   print(MyMath.cube(2));
+
+  /**--- Print Output ---
+    3.1415
+    8
+   -------------------------*/
+}
+*/
+
+
+//----------------------------------------------------------------------------------------------
+//-- 13) What if a class uses a mixin containing abstract method ?
+
+/**
+   What if a class uses a mixin containing abstract method -> a mixin can have abstract method and that's completely
+    fine and whichever class that uses a mixin that contains abstract method it is a resposibility of that class to 
+    override or implement all abstract method present in the mixin in this case or scenario we can consider mixin like
+    the abstract class or has the interface that contains the abstract method 
+ */
+
+
+/*
+mixin Sleep{
+  void sleeping();
 }
 
-// https://youtu.be/Z7NLQTm60qo?list=PLeKQz1VjpjFqqXLvQ8rTnYxZcUqEGA0dm&t=756
+class Developer with Sleep{
+  // 
+}
+*/
+
+
+
+//----------------------------------------------------------------------------------------------
+//-- 14)  Out of class, interface & mixin which one is the best ?
+
+/**
+   Out of class, interface & mixin which one is the best ? -> it's not really a technical question that has to be answered 
+   by writing a code rather it's a logical question for object point of view the class interface and mixin all have their 
+   specific use and they have that specific role in the program .. But when it comes to talk about an object means we need 
+   an object then definitely we have only one choice that is a class because we cannot create object of interface or mixin
+   so we have to go with class only .. now consider place where we have some set of abstract methods or we have some set of 
+   methods that we want some class to be forced and that class has to implement those method so we can make interface and we
+   can place those methods inside that so interface can help you to handle these situation.. and the place where we have some 
+   piece of code and that has to be used in multiple class hierarchy we can simply use a mixin a lot of time people get confused
+   in between class and mixin and they try to compare the class with the mixin but make sure that the class and mixin they are not 
+   really a thing to be compare means it doesn't make sense to compare them because black is a different purpose and mixin has a 
+   different purpose because there are two strong limitations of mixin if we compare that on with the class we cannot create object 
+   of mixin and we cannot write constructor inside mixin so we cannot say mixin is a replacement of class or mixin is something 
+   that is made for multiple inheritance and all these things so it is not the case at all question no. 15 is to consider a 
+   situation where class is using multiple mixins and those multiple mixin have similar method but having different method signature
+   to understand that one let's look at the code.. -----------
+   ---We have two different mixin here called Paper and Canvas both contains a method called paint but the difference is in 
+   mixin Paper we have a method paint without any argument or parameter where as in mixin Canvas the pain method tooks two 
+   parameter width and height and inside this class called Painter we are trying to to use the two different mixins Paper and
+   Canvas and we can observe here we are getting errors now simple reason for error here is what is happening both this method
+   paint from the mixin called Paper and Canvas is getting inherited inside the class called Paint and as this method will have 
+   different signature that's the reason there are two paint method one is without any parameter and another one is having two 
+  parameters coming from the Canvas and as we know that in case of Dart it's not possible to have method overriding so we 
+  actually what is happening here with thise two different mixin we are getting two different methods so it is making like the 
+  method overriding means having the same name method with different signature and that's not allowed in the Dart 
+ */
+
+/*
+mixin Paper{
+    void paint(){
+        print('paint something on Paper');
+    }
+}
+
+mixin Canvas{
+    void paint(var width, var height){
+        print('paint something on Canvas');
+    }
+}
+
+class Painter with Paper, Canvas{
+}
+*/
+
+
+//----------------------------------------------------------------------------------------------
+//-- 16) What if when super class & mixin have same method ?
+
+/**
+  Look at the situation we've a class called Father that contains a method giftForSon and we've mixin called mother
+  having the same method called void giftForSun and inside the class Son we have used extend father means the superclass 
+  Father and we are tyring to use a mixin called Mother and the observable thing is the method giftForSon if coming from
+  both the class called Father and from the mixin called Mother now when we run this program  obviously in the main we have
+  the object of Son here so through this Son object which giftForSon method will call means either coming from the Father
+  class or coming from the mixin called mother so let run this program and .. definitely the method from mother mixin will 
+  get call here and the simple reason here is as we know that whenever se a mixin or when we use multiple mixin so we have to 
+  think in the form of sequence so as we have a class first so the method of the method giveForSon from the father class will 
+  get inherited and as there is the same method present in the mixin called mother so the old method of the father that is 
+  the old method giveForSon from the father class will be replaced by the new method of giveForSon by the mother class and that's 
+  the reason the new method that is the method from giftForSon from this mother mixin will get placed inside the class so that only 
+  one method will be visible inside the class and that's the reason when we run this program we will observe here the method mother 
+  has giftForSon that is he mixin the method from mixin is getting executed not from the mixin from class ...
+ */
+
+
+/*
+class Father{
+  void giftForSon(){
+    print('Father has gift for son');
+  }
+}
+
+mixin Mother{
+  void giftForSon(){
+    print('Mother has gift for son');
+  }
+}
+
+class Son extends Father with Mother{
+}
+
+void main(){
+  var son = Son();
+  son.giftForSon();
+
+  /** --- Print Output------
+     Mother has gift for son 
+   ---------------------------*/
+}
+*/
+
+
+//----------------------------------------------------------------------------------------------
+//-- 17) Is mixin used for multiple inheritance ?
+
+/**
+   Is mixin used for multiple inheritance ? -> We must say NO mixin is not used or it is not at all invented for 
+   multiple inheritance rather it is actually used when we have a peice of that has to be used in multiple class 
+   hierarchy 
+ */
+
+
+//----------------------------------------------------------------------------------------------
+//-- 18)  Can a class extends or implements the mixin ?
+
+/**
+   Can a class extends or implements the mixin ? -> When we think about extending mixin in the class it's not possible 
+   we can observe here we are trying to extend the mixin called work inside the class called Man and obviously it's not 
+   possible that's why Dart pad is giving an error however instead of extending mixin we can implement that one it's 
+   possible after removing extends and using instead that implements the error will gone or resolve .. 
+   Now after as we writing implements Work means want to use this mixin as the interface for the class so that's the 
+   reason instead of getting this complete method definition the abstrat method signature is coming inside the class
+   called Man and whichever class that implemetns interface an interface it's a responsibility of that class to override
+   the method so the Man class has to implement this working method .. so we've to just copy and paste this mixin Work 
+   method inside the Man class after pasting the error will resolve and that's completely working fine.. 
+ 
+ */
+
+mixin Work{
+  working(){
+    //
+  }
+}
+
+// class Man extends Work{
+class Man implements Work{
+  working(){
+    //
+  }
+}
+
+
+//----------------------------------------------------------------------------------------------
+//-- 19) Do members of mixin get inherited in level of inheritance ?
+
+/**
+   Do members of mixin get inherited in level of inheritance ? ->  
+   We have mixin called Fly that contains method called void flying and the Birds class is using a mixin that is using 
+   with Fly so obviously the flying method of Fly mixin will get inherited inside the Birds that's really the thing that 
+   we know .. now when we have class called Parrot and this Parrot classs extended the Birds class now the question is 
+   whether this method flying from this flying mixin will get inherited inside this Parrot class or not it means whether 
+   the methods or the properties of mixin will get inherited in level of inheritance or not as the same that we get in case 
+   of extending classes means whenever we extend the classes and we get the level of inheritance all the members of classes 
+   gets simulated like from Grandfather to father and from father to son and so on obviously it's getting inherited and we 
+   have proof for that one we can observe here in the main we have object of parrot and over this Parrot object we have called 
+   the Flying method let run this program we will observe here we will get output called flying from mixin fly....
+   so this is proof that method from this fly getting inherited in the Birds and the same method will get inherited in it's 
+   subclass and subclass so on .. 
+ */
+
+mixin Fly{
+  void flying(){
+    print('flying from mixin Fly....');
+  }
+}
+
+class Birds with Fly{
+  //
+}
+
+class Parrot extends Birds{
+  //
+}
+
+void main(){
+  var obj = Parrot();
+  obj.flying();
+}
+
+
+//----------------------------------------------------------------------------------------------
+//-- 20)  For using extends, implements & with all in a class, what's the correct sequence ?
+
+/**
+   For a single class we are allowed to use extend implements as well as the with for using the mixins now whenever we want to 
+   use all these three in a single class what is the correct sequence for using extends implements and with inside a single class
+   whenever we  want to use all these three inside a single class make sure that we have to first use extend and we can only extend
+   one class that's what we have understood so far in vides and after extend we have to use with caluse and whatever whatever 
+   mixins that we want to use we have to specify the list of mixins here and at the end we have to use implements caluse and here
+  we have to specify names of all interfaces that we want to implements inside the class ...
+ */
+
+// mixin
+mixin Study{ }
+
+// class
+class Exam{ }
+
+// interface
+class Practicals{ }
+
+// sequence
+class Student extends Exam with Study implements Practicals{ 
+//
+}
